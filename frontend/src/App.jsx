@@ -29,6 +29,7 @@ function App() {
     <>      
       <ContactsList contacts={contacts}/>      
       <button onClick={openModal}>Create New Contact</button>
+      <button onClick={() => methodDoesNotExist()}>Break the world</button>
       {
         isModalOpen && (
           <div className="modal">
