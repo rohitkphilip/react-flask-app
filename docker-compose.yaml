@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  react-frontend:
+    build: frontend/            
+    ports:
+      # - "5002:5173"
+      - "5002:80"
+
+  flask-backend:
+    container_name: flask-api
+    build: backend/
+    ports:
+      - "5004:8000"
+
+  example-prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    container_name: example-prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    # networks:
+    #   example-network:
+    #     ipv4_address: 172.16.238.11
+
+  

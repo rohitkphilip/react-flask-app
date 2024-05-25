@@ -3,7 +3,10 @@ from config import app, db
 from models import Contact
 
 
-
+@app.route("/error")
+def hello_world():
+    1/0  # raises an error
+    return "Endpoint for testing errors for sentry"
 
 @app.route("/contacts", methods=["GET"])
 def get_contacts():
@@ -71,4 +74,5 @@ if __name__ == "__main__": # the code within this if block is only run when this
     with app.app_context():
         db.create_all()  # check if database has been created. if not, it creates the database
 
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host='0.0.0.0')

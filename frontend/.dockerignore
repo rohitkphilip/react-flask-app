@@ -1,0 +1,8 @@
+dist
+node_modules
+.gitignore
+.dockerignore
+Dockerfile
+README.md
+.env.sentry-build-plugin
+.eslintrc.cjs
